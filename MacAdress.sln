@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacAdress", "MacAdress\MacAdress.csproj", "{6693B911-580D-4262-A16B-B1CE65F980D5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup2", "Setup2\Setup2.vdproj", "{880809D1-7DBD-4C98-A254-98EB158A50C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6693B911-580D-4262-A16B-B1CE65F980D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6693B911-580D-4262-A16B-B1CE65F980D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6693B911-580D-4262-A16B-B1CE65F980D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6693B911-580D-4262-A16B-B1CE65F980D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{880809D1-7DBD-4C98-A254-98EB158A50C3}.Debug|Any CPU.ActiveCfg = Debug
+		{880809D1-7DBD-4C98-A254-98EB158A50C3}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
