@@ -1,0 +1,16 @@
+E:\NET\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.exe.config
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.Form1.resources
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.Properties.Resources.resources
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.csproj.GenerateResource.Cache
+E:\NET\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.exe
+E:\NET\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.pdb
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.exe
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.pdb
+E:\NET\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.exe.manifest
+E:\NET\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.application
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.TrustInfo.xml
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.exe.manifest
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.application
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.Form2.resources
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.main.resources
+E:\NET\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.csprojResolveAssemblyReference.cache
