@@ -43,6 +43,7 @@ namespace MacAdress
                     username= textBox2.Text;
                     teacher = comboBox1.Text;
                     main mf = new main(userid, username, teacher);
+                  // Form4 mf = new Form4(userid, username, teacher);
                     mf.Show();
                     this.Hide();
                     

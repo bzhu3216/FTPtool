@@ -12,7 +12,8 @@ namespace MacAdress
 {
     class downloadPaper
     {
-
+        private string ftpUserID = "FTPSE";//用户名  
+        private string ftpPassword = "Se50214252";//密码  
         /////////////////////////////////////
         /// 单个文件下载方法  
         /// </summary>  
@@ -25,12 +26,13 @@ namespace MacAdress
             //MessageBox.Show("nam");
             FileStream outputStream = new FileStream(adss, FileMode.Create);
             FtpWebRequest downRequest = (FtpWebRequest)WebRequest.Create(new Uri(ftpadss));
+            downRequest.Credentials = new NetworkCredential(ftpUserID, ftpPassword);// ftp用户名和密码
             //设置要发到 FTP 服务器的命令  
             downRequest.Method = WebRequestMethods.Ftp.DownloadFile;
             FtpWebResponse response = (FtpWebResponse)downRequest.GetResponse();
             Stream ftpStream = response.GetResponseStream();
             long cl = response.ContentLength;
-            int bufferSize = 2048;
+            int bufferSize = 4096;
             int readCount;
             byte[] buffer = new byte[bufferSize];
             readCount = ftpStream.Read(buffer, 0, bufferSize);
@@ -53,6 +55,7 @@ namespace MacAdress
             try
             {
                 ftpRequest = (FtpWebRequest)WebRequest.Create(new Uri(ftpads + name));
+                ftpRequest.Credentials = new NetworkCredential(ftpUserID, ftpPassword);// ftp用户名和密码
                 ftpRequest.Method = type;
                 webresp = ftpRequest.GetResponse();
                 ftpFileListReader = new StreamReader(webresp.GetResponseStream(), Encoding.UTF8  );
@@ -60,6 +63,7 @@ namespace MacAdress
             catch (Exception ex)
             {
                 ex.ToString();
+                throw (ex);
 
             }
             StringBuilder str = new StringBuilder();

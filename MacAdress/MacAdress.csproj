@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\Administrator\Desktop\test\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -73,9 +73,6 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\lib\netstandard1.3\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -93,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="downloadPaper.cs" />
-    <Compile Include="Dzip.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>

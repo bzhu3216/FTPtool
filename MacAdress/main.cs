@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
-using testzip;
 namespace MacAdress
 {
     public partial class main : Form
@@ -16,6 +15,7 @@ namespace MacAdress
         public string userid = null;
         public string username = null;
         public string teacher = null;
+       // private bool autoup = true;
         public main(string userid1,string username1,string teacher1)
         {
             InitializeComponent();
@@ -49,18 +49,27 @@ namespace MacAdress
                     first = false;
                 }
                 downloadPaper pa = new downloadPaper();
-                pa.downftp(ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\" + userid + currentTime.ToString("m")+@"download");
+                pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\" + userid + currentTime.ToString("m")+@"download");
                 GenInfo.GenFile(username, userid, Getinfo.GetClientLocalIPv4Address(), Getinfo.GetMacAddress());
                 if(first)   GenInfo.Copy(@"c:\" + userid + currentTime.ToString("m") + @"download", @"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
+                ////////////
+                string filePath = @"c:\" + userid + currentTime.ToString("m") + @"download";
 
+                if (Directory.Exists(filePath))
+                {
+                  //  Directory.Delete(filePath);
+                   
+                }
+
+                ///////////
                 MessageBox.Show("下载完成");
                 button2.Enabled = true;
                 button3.Enabled = true;
                 button1.Enabled = false;
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("请正确填写和选择信息下载不成功 ");
+                MessageBox.Show(ex.Message+"请正确填写和选择信息下载不成功 ");
             }
 
 
@@ -79,7 +88,7 @@ namespace MacAdress
             label1.Text = "上传文件中。。。";
             UploadFileFTP up = new UploadFileFTP();
             System.DateTime currentTime = DateTime.Now;
-            up.UploadDirectory(@"c:\", ConfigurationManager.AppSettings["ftpip"]+teacher+@"/upload/", userid + username + "-"+currentTime.ToString("m") + @"上传文件夹");
+            up.UploadDirectory(@"c:\", "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"]+teacher+@"/upload/", userid + username + "-"+currentTime.ToString("m") + @"上传文件夹");
             MessageBox.Show("上传成功!");
             label1.Text = "";
 
@@ -97,23 +106,36 @@ namespace MacAdress
             string caption = "退出";
 
             result = MessageBox.Show(message, caption, buttons);
-           
-            if(result== System.Windows.Forms.DialogResult.Yes)
+            System.DateTime currentTime = DateTime.Now;
+            UploadFileFTP up = new UploadFileFTP();
+            if (result== System.Windows.Forms.DialogResult.Yes)
                 { 
                 try
-                {
-                    label1.Text = "正在退出。。。";
-                    System.DateTime currentTime = DateTime.Now;
-                    Dzip.ZipFile(@"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹", @"c:\" + userid + username + ".zip");
-                    UploadFileFTP up = new UploadFileFTP();
-                    up.UpLoadFile(@"c:\" + userid + username + ".zip", ConfigurationManager.AppSettings["ftpip"] + teacher + @"/bak/" + userid + username + ".zip");
-                    label1.Text = "";
+                {       if (up.CheckDirectoryExist2("ftp://192.168." + ConfigurationManager.AppSettings["ftpip"] + teacher + @"/upload/", userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
+                    {
+                        label1.Text = "正在退出。。。";
+
+                        Application.Exit();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("请上传文件后退出");
+                    } 
+                   
+                    
+
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("非正常退出请联系老师 ");
+                    MessageBox.Show(ex.Message+"异常，请联系老师 ");
+                   
+                    Application.Exit();
+
+
+
                 }
-                Application.Exit();
+               
             }
 
         }

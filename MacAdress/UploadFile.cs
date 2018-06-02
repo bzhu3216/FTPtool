@@ -14,8 +14,8 @@ namespace MacAdress
     {
         ///////////////////////////////////////
        // private string ftpServerIP = "192.168.131.219";//服务器ip  
-      //  private string ftpUserID = "FTPSE";//用户名  
-      //  private string ftpPassword = "Se50214252";//密码  
+       private string ftpUserID = "FTPSE";//用户名  
+       private string ftpPassword = "Se50214252";//密码  
 
         #region 上传文件  
 
@@ -35,7 +35,7 @@ namespace MacAdress
             FtpWebRequest reqFTP;
 
             reqFTP = (FtpWebRequest)FtpWebRequest.Create(ftpPath);// 根据uri创建FtpWebRequest对象   
-           // reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);// ftp用户名和密码  
+            reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);// ftp用户名和密码  
             reqFTP.KeepAlive = false;// 默认为true，连接不会被关闭 // 在一个命令之后被执行  
             reqFTP.Method = WebRequestMethods.Ftp.UploadFile;// 指定执行什么命令  
             reqFTP.UseBinary = true;// 指定数据传输类型  
@@ -65,6 +65,7 @@ namespace MacAdress
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message+"上传单个文件");
+                throw (ex);
                 // Response.Write("上传文件【" + ftpPath + "/" + fileInf.Name + "】时，发生错误：" + ex.Message + "<br/>");
             }
         }
@@ -135,7 +136,7 @@ namespace MacAdress
             {
                 //实例化FTP连接  
                 FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create((ftpPath + dirName).Trim());
-                // ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
+                ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                ftp.UseBinary = true;
                 ftp.Method = WebRequestMethods.Ftp.ListDirectory;
                 FtpWebResponse response = (FtpWebResponse)ftp.GetResponse();
@@ -170,7 +171,7 @@ namespace MacAdress
                     reqFTP = (FtpWebRequest)FtpWebRequest.Create(ui);
                     reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
                     reqFTP.UseBinary = true;
-                    // reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
+                    reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                     FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                     Stream ftpStream = response.GetResponseStream();
                     ftpStream.Close();
@@ -234,7 +235,7 @@ namespace MacAdress
             FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(path));
             ftp.UseBinary = true;
 
-           // ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
+           ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
             StringBuilder result = new StringBuilder();
             try
             {
@@ -272,7 +273,7 @@ namespace MacAdress
             FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpPath));
             ftp.UseBinary = true;
 
-           // ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
+           ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
             StringBuilder result = new StringBuilder();
             try
             {
