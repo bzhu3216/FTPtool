@@ -49,9 +49,9 @@ namespace MacAdress
                     first = false;
                 }
                 downloadPaper pa = new downloadPaper();
-                pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\" + userid + currentTime.ToString("m")+@"download");
+                pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\download" + currentTime.ToString("m"));
                 GenInfo.GenFile(username, userid, Getinfo.GetClientLocalIPv4Address(), Getinfo.GetMacAddress());
-                if(first)   GenInfo.Copy(@"c:\" + userid + currentTime.ToString("m") + @"download", @"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
+                if(first)   GenInfo.Copy(@"c:\download" + currentTime.ToString("m"), @"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
                 ////////////
                 string filePath = @"c:\" + userid + currentTime.ToString("m") + @"download";
 
