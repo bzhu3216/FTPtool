@@ -7,70 +7,67 @@ using System.IO;
 using System.Windows.Forms;
 namespace MacAdress
 {
-    internal class FlashDisk
+/// <summary>
+/// ///////////////////////////////////////////////////////
+/// </summary>
+   public class abnormal
+
     {
-        private const int WmDeviceChange = 0x219;//U盘插入后，OS的底层会自动检测到，然后向应用程序发送“硬件设备状态改变“的消息
-        private const int DbtDeviceArrival = 0x8000;  //就是用来表示U盘可用的。一个设备或媒体已被插入一块，现在可用。
-        private const int DbtConfigChangeCanceled = 0x0019;  //要求更改当前的配置（或取消停靠码头）已被取消。
-        private const int DbtConfigchanged = 0x0018;  //当前的配置发生了变化，由于码头或取消固定。
-        private const int DbtCustomEvent = 0x8006; //自定义的事件发生。 的Windows NT 4.0和Windows 95：此值不支持。
-        private const int DbtDeviceQueryRemove = 0x8001;  //审批要求删除一个设备或媒体作品。任何应用程序也不能否认这一要求，并取消删除。
-        private const int DbtDeviceQueryRemoveFailed = 0x8002;  //请求删除一个设备或媒体片已被取消。
-        private const int DbtDeviceRemoveComplete = 0x8004;  //一个设备或媒体片已被删除。
-        private const int DbtDeviceRemovePending = 0x8003;  //一个设备或媒体一块即将被删除。不能否认的。
-        private const int DbtDeviceTypeSpecific = 0x8005;  //一个设备特定事件发生。
-        private const int DbtDevNodesChanged = 0x0007;  //一种设备已被添加到或从系统中删除。
-        private const int DbtQueryChangeConfig = 0x0017;  //许可是要求改变目前的配置（码头或取消固定）。
-        private const int DbtUserDefined = 0xFFFF;  //此消息的含义是用户定义的
-
-        public static string[] GetRemovableDrivers(ref Message m)
-        {
-            try
-            {
-                if (m.Msg != WmDeviceChange) return null;
-
-                switch (m.WParam.ToInt32())
-                {
-                    case WmDeviceChange:
-                        break;
-                    case DbtDeviceArrival://检测到U盘插入
-                    case DbtDeviceRemoveComplete: //检测到U盘拔出
-                        var driveInfos = DriveInfo.GetDrives();
-
-                        var flashDisks = from driveInfo in driveInfos
-                                         where driveInfo.DriveType == DriveType.Removable
-                                         select driveInfo.Name;
-                        return flashDisks.ToArray();
-                    case DbtConfigChangeCanceled:
-                        break;
-                    case DbtConfigchanged:
-                        break;
-                    case DbtCustomEvent:
-                        break;
-                    case DbtDeviceQueryRemove:
-                        break;
-                    case DbtDeviceQueryRemoveFailed:
-                        break;
-                    case DbtDeviceRemovePending:
-                        break;
-                    case DbtDeviceTypeSpecific:
-                        break;
-                    case DbtQueryChangeConfig:
-                        break;
-                    case DbtUserDefined:
-                        break;
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return null;
-        }
+         public abnormal()
+    {
     }
 
 
+
+    public static void PrintFileVersionInfo2(string path)
+        {
+            System.IO.FileInfo fileInfo = null;
+            try
+            {
+                fileInfo = new System.IO.FileInfo(path);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                // 其他处理异常的代码
+            }
+            // 如果文件存在
+            if (fileInfo != null && fileInfo.Exists)
+            {
+                System.Diagnostics.FileVersionInfo info = System.Diagnostics.FileVersionInfo.GetVersionInfo(path);
+                Console.WriteLine("文件名称=" + info.FileName);
+                Console.WriteLine("产品名称=" + info.ProductName);
+                Console.WriteLine("公司名称=" + info.CompanyName);
+                Console.WriteLine("文件版本=" + info.FileVersion);
+                Console.WriteLine("产品版本=" + info.ProductVersion);
+                // 通常版本号显示为「主版本号.次版本号.生成号.专用部件号」
+                Console.WriteLine("系统显示文件版本：" + info.ProductMajorPart + '.' + info.ProductMinorPart + '.' + info.ProductBuildPart + '.' + info.ProductPrivatePart);
+                Console.WriteLine("文件说明=" + info.FileDescription);
+                Console.WriteLine("文件语言=" + info.Language);
+                Console.WriteLine("原始文件名称=" + info.OriginalFilename);
+                Console.WriteLine("文件版权=" + info.LegalCopyright);
+
+                Console.WriteLine("文件大小=" + System.Math.Ceiling(fileInfo.Length / 1024.0) + " KB");
+            }
+            else
+            {
+                Console.WriteLine("指定的文件路径不正确!");
+            }
+            // 末尾空一行
+            Console.WriteLine();
+        }
+
+
+ //////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+//////////////////////////////////////////
 }
 
 
