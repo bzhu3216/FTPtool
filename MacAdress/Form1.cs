@@ -17,7 +17,30 @@ namespace MacAdress
         {
             InitializeComponent();
         }
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
 
+            try
+            {
+                var aa = FlashDisk.GetRemovableDrivers(ref m);
+                if (aa == null || aa.Length < 1) return;
+
+                var ds = string.Empty;
+                for (int i = 0; i < aa.Length; i++)
+                {
+                    ds += aa[i] + Environment.NewLine;
+                }
+
+                Console.WriteLine(ds);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 

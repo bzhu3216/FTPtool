@@ -38,6 +38,7 @@ namespace MacAdress
         private void button1_Click(object sender, EventArgs e)
         {
             label1.Text = "下载实验或试卷中。。。";
+            button1.Enabled = false;
             System.DateTime currentTime =  DateTime.Now;
             ////////////////////////////////////////////
             try
@@ -49,9 +50,9 @@ namespace MacAdress
                     first = false;
                 }
                 downloadPaper pa = new downloadPaper();
-                pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\download" + currentTime.ToString("m"));
+                pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\downloadFTP" );
                 GenInfo.GenFile(username, userid, Getinfo.GetClientLocalIPv4Address(), Getinfo.GetMacAddress());
-                if(first)   GenInfo.Copy(@"c:\download" + currentTime.ToString("m"), @"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
+                if(first)   GenInfo.Copy(@"c:\downloadFTP", @"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
                 ////////////
                 string filePath = @"c:\" + userid + currentTime.ToString("m") + @"download";
 
@@ -77,6 +78,7 @@ namespace MacAdress
 
          
             label1.Text = "";
+            button1.Enabled = true;
 
 
 
@@ -85,12 +87,14 @@ namespace MacAdress
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
             label1.Text = "上传文件中。。。";
             UploadFileFTP up = new UploadFileFTP();
             System.DateTime currentTime = DateTime.Now;
             up.UploadDirectory(@"c:\", "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"]+teacher+@"/upload/", userid + username + "-"+currentTime.ToString("m") + @"上传文件夹");
             MessageBox.Show("上传成功!");
             label1.Text = "";
+            button2.Enabled = true;
 
 
 
