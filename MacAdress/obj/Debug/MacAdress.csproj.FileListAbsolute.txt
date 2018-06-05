@@ -30,3 +30,6 @@ E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.csproj.GenerateR
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.TrustInfo.xml
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.exe.manifest
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.application
+E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\bin\Debug\MacAdress.exe.config
+E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\obj\Debug\MacAdress.exe
+E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\obj\Debug\MacAdress.pdb
