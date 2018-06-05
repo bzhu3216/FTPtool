@@ -73,11 +73,26 @@ namespace MacAdress
                 CopyAll(diSourceSubDir, nextTargetSubDir);
             }
         }
-    
+
 
         ////////////////////////////////////////////////////////////
+        public static bool Checkfile(string path, string name)
+
+        {
+            if (File.Exists(path + name))
+                return true;
+            else
+
+            return false;
+
+        }
 
 
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////
 
 
 

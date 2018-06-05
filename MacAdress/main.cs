@@ -87,16 +87,25 @@ namespace MacAdress
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button2.Enabled = false;
-            label1.Text = "上传文件中。。。";
             UploadFileFTP up = new UploadFileFTP();
             System.DateTime currentTime = DateTime.Now;
-            up.UploadDirectory(@"c:\", "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"]+teacher+@"/upload/", userid + username + "-"+currentTime.ToString("m") + @"上传文件夹");
-            MessageBox.Show("上传成功!");
-            label1.Text = "";
-            button2.Enabled = true;
 
+            if (GenInfo.Checkfile(@"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹\", "log.dat"))
+            {
 
+                button2.Enabled = false;
+                label1.Text = "上传文件中。。。";
+                
+                up.UploadDirectory(@"c:\", "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"] + teacher + @"/upload/", userid + username + "-" + currentTime.ToString("m") + @"上传文件夹");
+                MessageBox.Show("上传成功!");
+                label1.Text = "";
+                button2.Enabled = true;
+            }
+            else
+            {
+
+                MessageBox.Show("你删除了系统文件,联系老师!");
+            }
 
 
         }

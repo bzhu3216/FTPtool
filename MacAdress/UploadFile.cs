@@ -13,9 +13,9 @@ namespace MacAdress
     class UploadFileFTP
     {
         ///////////////////////////////////////
-       // private string ftpServerIP = "192.168.131.219";//服务器ip  
-       private string ftpUserID = "FTPSE";//用户名  
-       private string ftpPassword = "Se50214252";//密码  
+        // private string ftpServerIP = "192.168.131.219";//服务器ip  
+        private string ftpUserID = "FTPSE";//用户名  
+        private string ftpPassword = "Se50214252";//密码  
 
         #region 上传文件  
 
@@ -28,7 +28,7 @@ namespace MacAdress
         {
             if (!File.Exists(localFile))
             {
-               // Response.Write("文件：“" + localFile + "” 不存在！");
+                // Response.Write("文件：“" + localFile + "” 不存在！");
                 return;
             }
             FileInfo fileInf = new FileInfo(localFile);
@@ -60,11 +60,11 @@ namespace MacAdress
                 // 关闭两个流  
                 strm.Close();
                 fs.Close();
-               // Response.Write("文件【" + ftpPath + "/" + fileInf.Name + "】上传成功！<br/>");
+                // Response.Write("文件【" + ftpPath + "/" + fileInf.Name + "】上传成功！<br/>");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message+"上传单个文件");
+                MessageBox.Show(ex.Message + "上传单个文件");
                 throw (ex);
                 // Response.Write("上传文件【" + ftpPath + "/" + fileInf.Name + "】时，发生错误：" + ex.Message + "<br/>");
             }
@@ -97,7 +97,7 @@ namespace MacAdress
             if (!CheckDirectoryExist2(ftpPath, dirName))
             {
                 MakeDir(ftpPath, dirName);//不存在，则创建此文件夹 
-               
+
             }
             List<List<string>> infos = GetDirDetails(dir); //获取当前目录下的所有文件和文件夹  
 
@@ -105,7 +105,7 @@ namespace MacAdress
             //Response.Write(dir + "下的文件数：" + infos[0].Count.ToString() + "<br/>");  
             for (int i = 0; i < infos[0].Count; i++)
             {
-               // Console.WriteLine(infos[0][i]);
+                // Console.WriteLine(infos[0][i]);
                 UpLoadFile(dir + infos[0][i], ftpPath + dirName + @"/" + infos[0][i]);
             }
             //再处理文件夹  
@@ -137,22 +137,22 @@ namespace MacAdress
                 //实例化FTP连接  
                 FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create((ftpPath + dirName).Trim());
                 ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-               ftp.UseBinary = true;
+                ftp.UseBinary = true;
                 ftp.Method = WebRequestMethods.Ftp.ListDirectory;
                 FtpWebResponse response = (FtpWebResponse)ftp.GetResponse();
                 response.Close();
-                 return flag;
+                return flag;
 
             }
             catch (Exception)
             {
                 flag = false;
-                MessageBox.Show((ftpPath + dirName).Trim()+"已存在");
+                MessageBox.Show((ftpPath + dirName).Trim() + "已存在");
                 return flag;
             }
 
-            
-          
+
+
         }
 
         /// <summary>  
@@ -166,25 +166,25 @@ namespace MacAdress
             FtpWebRequest reqFTP;
             try
             {
-               
-                    string ui = (ftpPath + dirName).Trim();
-                    reqFTP = (FtpWebRequest)FtpWebRequest.Create(ui);
-                    reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
-                    reqFTP.UseBinary = true;
-                    reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
-                    FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
-                    Stream ftpStream = response.GetResponseStream();
-                    ftpStream.Close();
-                    response.Close();
-                
+
+                string ui = (ftpPath + dirName).Trim();
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(ui);
+                reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
+                reqFTP.UseBinary = true;
+                reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                Stream ftpStream = response.GetResponseStream();
+                ftpStream.Close();
+                response.Close();
+
                 //Response.Write("文件夹【" + dirName + "】创建成功！<br/>");
-               // MessageBox.Show("创建成功dir！");
+                // MessageBox.Show("创建成功dir！");
             }
 
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message+"新建文件夹22");
+                MessageBox.Show(ex.Message + "新建文件夹22");
                 //  Response.Write("新建文件夹【" + dirName + "】时，发生错误：" + ex.Message);
             }
 
@@ -235,14 +235,14 @@ namespace MacAdress
             FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(path));
             ftp.UseBinary = true;
 
-           ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
+            ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
             StringBuilder result = new StringBuilder();
             try
             {
 
                 ftp.Method = WebRequestMethods.Ftp.ListDirectory;
                 WebResponse response = ftp.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8 );//中文文件名
+                StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8);//中文文件名
                 string line = reader.ReadLine();
                 while (line != null)
                 {
@@ -273,7 +273,7 @@ namespace MacAdress
             FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpPath));
             ftp.UseBinary = true;
 
-           ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
+            ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);//如果是匿名登录，则注释掉。
             StringBuilder result = new StringBuilder();
             try
             {
@@ -289,13 +289,13 @@ namespace MacAdress
                         response.Close();
                         return true;
                     }
-                       
+
                     result.Append(line);
                     result.Append("\n");
                     line = reader.ReadLine();
                 }
                 // to remove the trailing '\n'
-               // result.Remove(result.ToString().LastIndexOf('\n'), 1);
+                // result.Remove(result.ToString().LastIndexOf('\n'), 1);
                 reader.Close();
                 response.Close();
 
@@ -313,13 +313,29 @@ namespace MacAdress
         }
 
 
-            //////////////////////////////////////
+        //////////////////////////////////////
+
+        public bool CheckFTPfile(string path,string name)
+
+        {
+            String[] filesstr = GetFileList(path);
+            for (int i = 0; i< filesstr.Length;i++)
+                {
+                if (filesstr[i].Trim().Equals(name.Trim())) return true;
+
+
+                }
+
+            return false;
+
+        }
 
 
 
 
 
 
+        ////////////////////////////////////////////////////////
 
 
 
