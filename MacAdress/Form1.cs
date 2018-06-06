@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace MacAdress
 {
@@ -70,8 +71,33 @@ namespace MacAdress
 
         private void button6_Click(object sender, EventArgs e)
         {
-            textBox6.Text=abnormal.PrintFileVersionInfo2(@"C:\11111111111zb-6月5日上传文件夹\log.dat");
-            textBox7.Text = abnormal.PrintFileVersionInfo2(@"C:\11111111111zb-6月5日上传文件夹\key.xlsx");
+            //textBox6.Text=abnormal.PrintFileVersionInfo2(@"C:\11111111111zb-6月5日上传文件夹\log.dat");
+            /// textBox7.Text = abnormal.PrintFileVersionInfo2(@"C:\11111111111zb-6月5日上传文件夹\key.xlsx");
+            /// 
+
+            string p_1 = @"C:\11111111111zb-6月5日上传文件夹\log.dat";
+            string p_2 = @"C:\11111111111zb-6月5日上传文件夹\log1.dat"; 
+
+            //计算第一个文件的哈希值
+            var hash = System.Security.Cryptography.HashAlgorithm.Create();
+            var stream_1 = new System.IO.FileStream(p_1, System.IO.FileMode.Open);
+            byte[] hashByte_1 = hash.ComputeHash(stream_1);
+            stream_1.Close();
+            //计算第二个文件的哈希值
+            var stream_2 = new System.IO.FileStream(p_2, System.IO.FileMode.Open);
+            byte[] hashByte_2 = hash.ComputeHash(stream_2);
+            stream_2.Close();
+
+            //比较两个哈希值
+            if (BitConverter.ToString(hashByte_1) == BitConverter.ToString(hashByte_2))
+                //Console.WriteLine("两个文件相等");
+                MessageBox.Show("两个文件相等");
+            else
+                // Console.WriteLine("两个文件不等");
+                MessageBox.Show("两个文件不等");
+
+
+
         }
     }
 }

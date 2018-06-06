@@ -117,6 +117,7 @@ namespace MacAdress
 
             string message = "确定要退出吗?";
             string caption = "退出";
+            abnormal ab = new abnormal();
 
             result = MessageBox.Show(message, caption, buttons);
             System.DateTime currentTime = DateTime.Now;
@@ -124,7 +125,8 @@ namespace MacAdress
             if (result== System.Windows.Forms.DialogResult.Yes)
                 { 
                 try
-                {       if (up.CheckDirectoryExist2("ftp://192.168." + ConfigurationManager.AppSettings["ftpip"] + teacher + @"/upload/", userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
+                {      // if (up.CheckDirectoryExist2("ftp://192.168." + ConfigurationManager.AppSettings["ftpip"] + teacher + @"/upload/", userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
+                    if(ab.CompareDir (@"c:\","ftp://192.168." + ConfigurationManager.AppSettings["ftpip"] + teacher + @"/upload/", userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
                     {
                         label1.Text = "正在退出。。。";
 
@@ -133,7 +135,7 @@ namespace MacAdress
                     }
                     else
                     {
-                        MessageBox.Show("请上传文件后退出");
+                        MessageBox.Show("文件有更新请上传文件后退出");
                     } 
                    
                     

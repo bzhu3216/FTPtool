@@ -195,7 +195,7 @@ namespace MacAdress
         /// </summary>  
         /// <param name="localDir">本机目录</param>  
         /// <returns></returns>  
-        private List<List<string>> GetDirDetails(string localDir)
+        public  List<List<string>> GetDirDetails(string localDir)
         {
             List<List<string>> infos = new List<List<string>>();
             try
