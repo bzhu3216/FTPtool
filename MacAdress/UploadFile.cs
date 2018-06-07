@@ -312,22 +312,62 @@ namespace MacAdress
 
         }
 
+        /// <summary>
+        /// /////////////
+        /// </summary>
+        
 
-        //////////////////////////////////////
-
-        public bool CheckFTPfile(string path,string name)
+        public bool CheckFTPfile(string path, string name)
 
         {
             String[] filesstr = GetFileList(path);
-            for (int i = 0; i< filesstr.Length;i++)
-                {
+            for (int i = 0; i < filesstr.Length; i++)
+            {
                 if (filesstr[i].Trim().Equals(name.Trim())) return true;
 
 
-                }
+            }
 
             return false;
 
+        }
+        /// 
+        //////////////////////////////////////
+
+        public  void GenFileUpFTP(String name, String id, String ip, string mac, string ftpPath)
+        {
+            try
+            {
+                System.DateTime currentTime = DateTime.Now;
+                String path;
+                path = @"c:\" + id + name + "-" + currentTime.ToString("m") + @"上传文件夹";
+                if (Directory.Exists(path))
+                {
+                    //MessageBox.Show("文件夹已存在！");
+                    String path10 = id + name + currentTime.Minute + ".u";
+                    String path11 = path + @"\" +path10;
+                    FileStream fs = new FileStream(path11, FileMode.OpenOrCreate);
+                    StreamWriter sw = new StreamWriter(fs);
+                    sw.WriteLine(currentTime.ToString());
+                    // sw.WriteLine(name);
+                    //sw.WriteLine(ip);
+                    //sw.WriteLine(mac);
+                    // 
+                    sw.Close();
+                    UpLoadFile(path11, ftpPath+"/"+path10);
+
+                }
+                else
+                {
+
+                    MessageBox.Show("警告移除U盘，下载文件");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("u 盘异常");
+            }
         }
 
 
@@ -336,8 +376,11 @@ namespace MacAdress
 
 
         ////////////////////////////////////////////////////////
+       
 
 
+        ////////////////////////////////////////////////////////
 
-        }
+
+    }
 }

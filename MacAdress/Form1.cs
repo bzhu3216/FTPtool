@@ -65,7 +65,7 @@ namespace MacAdress
                         case DBT_DEVICEQUERYREMOVEFAILED:
                             break;
                         case DBT_DEVICEREMOVECOMPLETE:   //U盘卸载 
-                            label1.Text = "";
+                            //label1.Text = "";
                             break;
                         case DBT_DEVICEREMOVEPENDING:
                             break;

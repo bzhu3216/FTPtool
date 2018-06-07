@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
+using System.IO;
 
 namespace MacAdress
 {
     public partial class Form2 : Form
     {
+        
         public Form2()
         {
             InitializeComponent();
@@ -19,6 +21,14 @@ namespace MacAdress
         public string userid = null;
         public string username = null;
         public string teacher = null;
+        /// <summary>
+        /// //////////////////////////////////////////
+        
+
+        /// ///////////////////////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

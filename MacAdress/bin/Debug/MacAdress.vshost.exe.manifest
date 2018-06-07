@@ -41,14 +41,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MacAdress.exe" size="72704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MacAdress.exe" size="76288">
       <assemblyIdentity name="MacAdress" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NUV+DqUWrZANgkimhN0JIYir0YU=</dsig:DigestValue>
+        <dsig:DigestValue>p+WRzP+Cp+Xmhuk712m2S0E+Vjk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
