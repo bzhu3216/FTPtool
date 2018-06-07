@@ -94,19 +94,65 @@ namespace MacAdress
 
         /////////////////////////////////////////////////////////////////////////
 
-        public static void  deldir(string path, string name)
+        public static void  deldir(string dir)
 
         {
+
+            string pd_1 = dir;
+            UploadFileFTP up = new UploadFileFTP();
+
+            ///////////
+            //string dir = localDir + dirName + @"\"; //获取当前目录（父目录在目录名）  
+            //string dir = localDir + dirName + @"\";
+            //检测本地目录是否存在  
+            if (!Directory.Exists(pd_1))
+            {
+                //Response.Write("本地目录：“" + dir + "” 不存在！<br/>");
+                MessageBox.Show("本地目录：“" + pd_1 + "” 不存在111！");
+
+            }
+            else
+            {
+                List<List<string>> infos = up.GetDirDetails(pd_1); //获取当前目录下的所有文件和文件夹  
+
+                //先上传文件  
+                //Response.Write(dir + "下的文件数：" + infos[0].Count.ToString() + "<br/>");  
+                for (int i = 0; i < infos[0].Count; i++)
+                {
+                    // Console.WriteLine(infos[0][i]);
+                    File.Delete(pd_1 + @"\" + infos[0][i]);
+                  }
+                //再处理文件夹  
+                //Response.Write(dir + "下的目录数：" + infos[1].Count.ToString() + "<br/>");  
+                for (int i = 0; i < infos[1].Count; i++)
+                {
+                    deldir(pd_1 + @"\" + infos[1][i]);
+                }
+                Directory.Delete(pd_1);
+
+            }
+                /////// 
+
+
+
+            
            
-            
-            
-            
-            
-            
-            
-            
-            
-             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
         //////////////////////////////////////////////////////////////////////////

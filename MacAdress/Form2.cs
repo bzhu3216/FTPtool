@@ -53,7 +53,8 @@ namespace MacAdress
                     username= textBox2.Text;
                     teacher = comboBox1.Text;
                     main mf = new main(userid, username, teacher);
-                  // Form4 mf = new Form4(userid, username, teacher);
+                    // Form4 mf = new Form4(userid, username, teacher);
+                    GenInfo.deldir(@"c:\downloadFTP");
                     mf.Show();
                     this.Hide();
                     
