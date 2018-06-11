@@ -21,7 +21,6 @@ E:\FTP-考试\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.exe.manifest
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.application
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.exe
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\bin\Debug\MacAdress.pdb
-E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.csprojResolveAssemblyReference.cache
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.Form1.resources
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.Form2.resources
 E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.main.resources
@@ -33,3 +32,4 @@ E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.application
 E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\bin\Debug\MacAdress.exe.config
 E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\obj\Debug\MacAdress.exe
 E:\FTP-考试\MacAdress\MacAdress\FTPtool\MacAdress\obj\Debug\MacAdress.pdb
+E:\FTP-考试\MacAdress\MacAdress\MacAdress\obj\Debug\MacAdress.csprojResolveAssemblyReference.cache

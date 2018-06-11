@@ -43,6 +43,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -153,7 +154,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(115, 47);
             this.button6.TabIndex = 12;
-            this.button6.Text = "test com";
+            this.button6.Text = "test ";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -171,11 +172,22 @@
             this.textBox7.Size = new System.Drawing.Size(599, 21);
             this.textBox7.TabIndex = 14;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(800, 96);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(164, 63);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 566);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.button6);
@@ -216,6 +228,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button7;
     }
 }
 

@@ -107,6 +107,7 @@
             this.Name = "main";
             this.Text = "请按以下步骤";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.main_FormClosed);
             this.Load += new System.EventHandler(this.main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

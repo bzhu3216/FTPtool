@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace MacAdress
 {
@@ -79,6 +81,44 @@ namespace MacAdress
 
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Process pro = new Process();
+            // 设置命令行、参数 
+            pro.StartInfo.FileName = "cmd.exe";
+            pro.StartInfo.UseShellExecute = false;
+            pro.StartInfo.RedirectStandardInput = true;
+            pro.StartInfo.RedirectStandardOutput = true;
+            pro.StartInfo.RedirectStandardError = true;
+            pro.StartInfo.CreateNoWindow = true;
+            // 启动CMD 
+            pro.Start();
+            // 运行端口检查命令 
+            pro.StandardInput.WriteLine("netstat -ano");
+            pro.StandardInput.WriteLine("exit");
+            // 获取结果 
+            Regex reg = new Regex("\\s+", RegexOptions.Compiled);
+            string line = null;
+            while ((line = pro.StandardOutput.ReadLine()) != null)
+            {
+                line = line.Trim();
+                if (line.StartsWith("TCP", StringComparison.OrdinalIgnoreCase))
+                {
+                    line = reg.Replace(line, ",");
+                    string[] arr = line.Split(',');
+                    if (arr[1].EndsWith(":21"))
+                    {
+                        Console.WriteLine("80端口的进程ID：{0}", arr[4]);
+                        int pid = Int32.Parse(arr[4]);
+                        Process pro80 = Process.GetProcessById(pid);
+                        // 处理该进程 
+                        break;
+                    }
+                }
+            }
+            pro.Close();
         }
     }
 }

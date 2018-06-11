@@ -27,15 +27,15 @@ namespace MacAdress
 
 
 
-       
+
 
 
         //////////////////////////////////////////////////////
 
-        public  bool CompareFile(String  p_11 ,String p_22)
+        public bool CompareFile(String p_11, String p_22)
         {
-            string p_1 = p_11 ;
-            string p_2 = p_22 ;
+            string p_1 = p_11;
+            string p_2 = p_22;
             bool same;
 
             //计算第一个文件的哈希值
@@ -69,12 +69,12 @@ namespace MacAdress
         //////////////////////////////////////////
 
 
-        public  bool CompareDir(String pd_11, String pd_22,string ddir)
+        public bool CompareDir(String pd_11, String pd_22, string ddir)
         {   ///////////只要本地文件在服务器上的就可以，服务器上多的不管
-            
-            string pd_1 = pd_11+ddir;
+
+            string pd_1 = pd_11 + ddir;
             string pd_2 = pd_22;
-            bool samed=true;
+            bool samed = true;
 
             ///////////
             //string dir = localDir + dirName + @"\"; //获取当前目录（父目录在目录名）  
@@ -84,7 +84,7 @@ namespace MacAdress
             {
                 //Response.Write("本地目录：“" + dir + "” 不存在！<br/>");
                 MessageBox.Show("本地目录：“" + pd_1 + "” 不存在111！");
-                
+
             }
             //检测FTP的目录路径是否存在  
             if (!up.CheckDirectoryExist2(pd_22, ddir))
@@ -104,21 +104,21 @@ namespace MacAdress
             {
                 // Console.WriteLine(infos[0][i]);
                 if (!CompareFile(pd_1 + @"\" + infos[0][i], pd_2 + ddir + "/" + infos[0][i])) { samed = false;
-                  //  MessageBox.Show("msg1");
+                    //  MessageBox.Show("msg1");
                 }
             }
             //再处理文件夹  
             //Response.Write(dir + "下的目录数：" + infos[1].Count.ToString() + "<br/>");  
             for (int i = 0; i < infos[1].Count; i++)
             {
-                if(!CompareDir(pd_1+@"\" , pd_2 + ddir + "/", infos[1][i])) samed=false ;
+                if (!CompareDir(pd_1 + @"\", pd_2 + ddir + "/", infos[1][i])) samed = false;
                 //Response.Write("文件夹【" + dirName + "】上传成功！<br/>");  
             }
             //////////
 
 
 
-            
+
 
 
             return samed;
@@ -126,12 +126,23 @@ namespace MacAdress
         }
 
 
-////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////
+        public bool explorernoopen()
+        {
+            bool okk = true;
 
 
 
 
-///////////////////////////////////////////////////////////////////
+
+
+
+
+
+            return okk;
+         }
+
+            ///////////////////////////////////////////////////////////////////
 
 
         }

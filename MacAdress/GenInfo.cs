@@ -108,7 +108,7 @@ namespace MacAdress
             if (!Directory.Exists(pd_1))
             {
                 //Response.Write("本地目录：“" + dir + "” 不存在！<br/>");
-                MessageBox.Show("本地目录：“" + pd_1 + "” 不存在111！");
+              //  MessageBox.Show("本地目录：“" + pd_1 + "” 不存在111！");
 
             }
             else

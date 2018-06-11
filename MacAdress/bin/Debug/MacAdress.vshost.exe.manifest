@@ -41,14 +41,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MacAdress.exe" size="76288">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MacAdress.exe" size="77312">
       <assemblyIdentity name="MacAdress" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9WcmH9+3B9xQu4YEkoxcUl3r2fM=</dsig:DigestValue>
+        <dsig:DigestValue>F3xTAtn+akmfLP87npi5p27uRn8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,13 +61,13 @@
       <dsig:DigestValue>DIxShXrDkIW5lKMvkXSg2TlSB0I=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MacAdress.exe.config" size="1426">
+  <file name="MacAdress.exe.config" size="1459">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>rq/RLVDKDVKFchmf/C0Jb1azNWY=</dsig:DigestValue>
+      <dsig:DigestValue>Ij/knJBth+cJBA8GV6yxIGgacYQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

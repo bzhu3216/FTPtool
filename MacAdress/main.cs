@@ -116,6 +116,8 @@ namespace MacAdress
             label1.Text = "";
             button2.Enabled = false;
             button3.Enabled = false;
+            if(ConfigurationManager.AppSettings["exam"].ToString().Equals("1"))
+            Dnshelp.setDNS("8.6.6.6");
 
         }
 
@@ -288,6 +290,11 @@ namespace MacAdress
             UploadFileFTP up = new UploadFileFTP();
             up.GenFileUpFTP(username, userid, Getinfo.GetClientLocalIPv4Address(), Getinfo.GetMacAddress(), "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"].ToString() + teacher + "/upload");
 
+        }
+
+        private void main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Dnshelp.setDNS("202.121.241.8");
         }
     }
 }
