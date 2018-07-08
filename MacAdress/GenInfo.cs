@@ -33,7 +33,7 @@ namespace MacAdress
                     sw.WriteLine(ip);
                     sw.WriteLine(mac);
                     sw.Close();
-                    //  MessageBox.Show("创建成功!");
+                     //  MessageBox.Show("创建成功!");
 
                 }
 

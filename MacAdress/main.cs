@@ -113,11 +113,19 @@ namespace MacAdress
         /// <param name="e"></param>
         private void main_Load(object sender, EventArgs e)
         {
+            System.DateTime currentTime = DateTime.Now;
             label1.Text = "";
             button2.Enabled = false;
             button3.Enabled = false;
             if(ConfigurationManager.AppSettings["exam"].ToString().Equals("1"))
             Dnshelp.setDNS("8.6.6.6");
+            if (Directory.Exists(@"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
+            {
+                button1.Enabled = false;
+                button2.Enabled =true;
+                button3.Enabled = true;
+
+            }
 
         }
 
@@ -130,10 +138,17 @@ namespace MacAdress
             try
             {
                 bool first ;
-                first = true;                    ; 
-                if (Directory.Exists(@"c:\" + userid + currentTime.ToString("m") + @"download"))
+                first = true;
+                if (Directory.Exists(@"c:\downloadFTP"))
+                {
+                    GenInfo.deldir(@"c:\downloadFTP");
+
+                }
+
+                if (Directory.Exists(@"c:\" + userid + username + "-" + currentTime.ToString("m") + @"上传文件夹"))
                 {
                     first = false;
+
                 }
                 downloadPaper pa = new downloadPaper();
                 pa.downftp("ftp://192.168."+ConfigurationManager.AppSettings["ftpip"].ToString() + teacher+"/download", @"/", @"c:\downloadFTP" );
@@ -142,19 +157,19 @@ namespace MacAdress
                 ////////////
                 string filePath = @"c:\" + userid + currentTime.ToString("m") + @"download";
 
-                if (Directory.Exists(filePath))
+                if (Directory.Exists(@"c:\downloadFTP"))
                 {
-                  //  Directory.Delete(filePath);
-                   
+                    GenInfo.deldir(@"c:\downloadFTP");
+
                 }
 
                 ///////////
-                MessageBox.Show("下载完成");
+                
                 button2.Enabled = true;
                 button3.Enabled = true;
-                button1.Enabled = false;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message+"请正确填写和选择信息下载不成功 ");
             }
@@ -164,7 +179,8 @@ namespace MacAdress
 
          
             label1.Text = "";
-            button1.Enabled = true;
+            MessageBox.Show("下载完成");
+            // button1.Enabled = false;
 
 
 
@@ -200,6 +216,7 @@ namespace MacAdress
         {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
+            Dnshelp.setDNS("202.121.241.8");
 
             string message = "确定要退出吗?";
             string caption = "退出";
@@ -247,54 +264,11 @@ namespace MacAdress
            
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Process pro = new Process();
-            // 设置命令行、参数 
-            pro.StartInfo.FileName = "cmd.exe";
-            pro.StartInfo.UseShellExecute = false;
-            pro.StartInfo.RedirectStandardInput = true;
-            pro.StartInfo.RedirectStandardOutput = true;
-            pro.StartInfo.RedirectStandardError = true;
-            pro.StartInfo.CreateNoWindow = true;
-            // 启动CMD 
-            pro.Start();
-            // 运行端口检查命令 
-            pro.StandardInput.WriteLine("netstat -ano");
-            pro.StandardInput.WriteLine("exit");
-            // 获取结果 
-            Regex reg = new Regex("\\s+", RegexOptions.Compiled);
-            string line = null;
-            while ((line = pro.StandardOutput.ReadLine()) != null)
-            {
-                line = line.Trim();
-                if (line.StartsWith("TCP", StringComparison.OrdinalIgnoreCase))
-                {
-                    line = reg.Replace(line, ",");
-                    string[] arr = line.Split(',');
-                    if (arr[1].EndsWith(":21"))
-                    {
-                        Console.WriteLine("80端口的进程ID：{0}", arr[4]);
-                        int pid = Int32.Parse(arr[4]);
-                        Process pro80 = Process.GetProcessById(pid);
-                        // 处理该进程 
-                        break;
-                    }
-                }
-            }
-            pro.Close();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            UploadFileFTP up = new UploadFileFTP();
-            up.GenFileUpFTP(username, userid, Getinfo.GetClientLocalIPv4Address(), Getinfo.GetMacAddress(), "ftp://192.168." + ConfigurationManager.AppSettings["ftpip"].ToString() + teacher + "/upload");
-
-        }
+      
 
         private void main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Dnshelp.setDNS("202.121.241.8");
+           
         }
     }
 }
